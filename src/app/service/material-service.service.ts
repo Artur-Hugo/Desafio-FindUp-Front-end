@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Material } from '../model/Material';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MaterialServiceService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  getAllMaterials(): Observable<Material[]>{
+    return this.http.get<Material[]>('http://localhost:8080/rawMaterials/leite')
+  }
 }

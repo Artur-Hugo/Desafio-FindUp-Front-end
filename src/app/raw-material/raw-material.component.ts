@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Material } from '../model/Material';
+import { MaterialServiceService } from '../service/material-service.service';
+
 @Component({
   selector: 'app-raw-material',
   templateUrl: './raw-material.component.html',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RawMaterialComponent implements OnInit {
 
-  constructor() { }
+  material: Material = new Material();
+
+  listaMaterials : Material[]
+
+  constructor(
+    private materialService: MaterialServiceService
+  ) { }
 
   ngOnInit(): void {
+    this.getAllPostagens()
+    console.log(this.listaMaterials)
   }
 
+  getAllPostagens(){
+    this.materialService.getAllMaterials().subscribe((resp: Material[])=>{
+      this.listaMaterials = resp
+    })
+  }
 }

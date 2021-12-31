@@ -1,1 +1,10 @@
-<p>raw-material works!</p>
+<div class="card-columns">
+                    <div class="card text-center" *ngFor="let item of listaMaterials">
+                        <div class="card-body">
+                            <h5 class="card-title">{{item.name}}</h5>
+                          
+                            <p class="card-text">{{item.user}}</p>
+                            
+                        </div>
+                    </div>
+                </div>
