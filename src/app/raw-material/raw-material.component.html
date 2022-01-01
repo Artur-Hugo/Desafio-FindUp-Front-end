@@ -2,164 +2,173 @@
   
   <body>
   
-  <a href="#bg">Padeiro</a>
+  <a href="#bgPadeiro">Padeiro</a>
     <br>
   <a href="#bgEstoquista">Estoquista</a>
+
+  <!-- Inicio Janela Padeiro-->
   
-  <div id="bg"></div>
-  <div class="box">
-    <a href="" id="close">X</a>
-    <div class="container lista">
-      <h2>Listagem</h2>
-      <form action="/consultar" method="POST" name="frm_consulta" class="ml-3">
-          <div class="form-group">
-              <div class="row centro">
-                  <input type="text" class="form-control col-md-5" name="consulta"
-                  placeholder="Digite aqui a sua consulta" [(ngModel)]='materialName' (keyup)='findByMaterialName()'>
-                  <button type="submit" class="btn btn-success ml-4">Consultar</button>
+  <div id="bgPadeiro"></div>
+      <div class="boxPadeiro">
+        <a href="" id="close">X</a>
+        <div class="container lista ">
+          <h2 class="text-center mb-3 letraFluorescente">Buscar Material</h2>
+          <form action="/consultar" method="POST" name="frm_consulta" class="ml-3">
+              <div class="form-group">
+                  <div class="row centro">
+                      <input type="text" class="form-control col-md-5" name="consulta"
+                      placeholder="Digite aqui a sua consulta" [(ngModel)]='materialName' (keyup)='findByMaterialName()'>
+                      <button type="submit" class="btn btn-success ml-4">Consultar</button>
+                  </div>
               </div>
-          </div>
-      </form>
-      <div  align="center">
-          <table class="table">
-              <thead>
-                  <tr>
-                    <th><a href="#">identificação</a></th>
-                      <th><a href="#">nome</a></th>
-                      <th><a href="#">Quantidade</a></th>
-                      <th><a href="#">usuario</a></th>
-                     
-                      
-                  </tr>
-              </thead>
-              <tbody *ngFor="let material of listaMaterials">
-                  
-                      <tr>
-                          <td nowrap="true">
-                              <a >{{material.id}}</a>
-                          </td>
-                          <td nowrap="true">{{material.name}} </td>
-                          <td nowrap="true">{{material.quantity}} </td>
-                          <td nowrap="true">{{material.user}}</td>
-                        
-                          <td>
+          </form>
+                <div class="scroll" align="center">
+                    <table class="table letraFluorescente">
+                        <thead class="bg-green ">
+                            <tr>
+                              <th><a>identificação</a></th>
+                                <th><a >nome</a></th>
+                                <th><a >Quantidade</a></th>
+                                <th><a >usuario</a></th>
+                              
+                                
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let material of listaMaterials">
                             
-                          </td>
-                      </tr>
-                  
-              </tbody>
-          </table>
+                                <tr>
+                                    <td nowrap="true">
+                                        <a >{{material.id}}</a>
+                                    </td>
+                                    <td nowrap="true">{{material.name}} </td>
+                                    <td nowrap="true">{{material.quantity}} </td>
+                                    <td nowrap="true">{{material.user}}</td>
+                                  
+                                    <td>
+                                      
+                                    </td>
+                                </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+          <div class="isso letraFluorescente" id="ft-color">
+            <h1 class="text-center mb-3" > DarBaixa</h1>
+            <label for="quantity">Quantidade:</label>
+              <input
+                [(ngModel)]="materialDarBaixa.quantity"
+                name="quantity"
+                type="number"
+                class="linha"
+                id="quantity"
+                placeholder="Digite a Quantidade do material para dar baixa"
+              />
+
+            <label for="user">Usuario</label>
+              <input
+              [(ngModel)]="materialDarBaixa.user"
+                name="user"
+                type="text"
+                class="linha"
+                id="user"
+                placeholder="Digite o usuario que está dando baixa no material"
+              />
+
+              <div class="row botaocadastrar">
+                  <button type="button" class="btn btn-success tam">
+                  Dar baixa
+                </button> 
+            </div>
+        </div>
+        
       </div>
-     
-  </div>
   
     
     
   </div>	
+
+   <!-- FIm Janela Padeiro-->
+
+
+  <!-- Inicio Janela Estoquista-->
 
   <div id="bgEstoquista"></div>
-  <div class="boxEstoquista">
-    <a href="" id="close">X</a>
-    <div class="row d-flex align-items-lg-center ">
-    
-      <div class=" d-flex justify-content-center" id="img-bg"></div>
-      
+          <div class="boxEstoquista">
+            <a href="" id="close">X</a>
+            <div class="row d-flex align-items-lg-center ">
+            
+              <div class=" d-flex justify-content-center" id="img-bg"></div>
+              
 
 
-      <div class="borda bg-white" id="border">
+              <div class="borda bg-white" id="border">
 
-          <div class="row d-flex justify-content-center">
-              <div class="isso" id="ft-color">
-                  <div class="color">
-              <h1 class="text-center mb-3">Cadastrar Material</h1>
+                  <div class="row d-flex justify-content-center">
+                      <div class="isso" id="ft-color">
+                          <div class="color">
+                      <h1 class="text-center mb-3">Cadastrar Material</h1>
+                          </div>
+                          <label for="name">Nome:</label>
+                          <input
+                          [(ngModel)]="material.name"
+                          name="name"
+                          type="text"
+                          class="linha"
+                          id="name"
+                          required=""
+                          placeholder="Digite o nome do material"
+                        />
+          
+                        <label for="quantity">Quantidade</label>
+                        <input
+                          [(ngModel)]="material.quantity"
+                          name="quantity"
+                          type="number"
+                          class="linha"
+                          id="quantity"
+                          required=""
+                          placeholder="Digite a Quantidade do material"
+                        />
+          
+                        <label for="user">Usuario</label>
+                        <input
+                          [(ngModel)]="material.user"
+                          name="user"
+                          type="text"
+                          class="linha"
+                          id="user"
+                          required=""
+                          placeholder="Digite o usuario que está cadastrando o material"
+                        />
+                          <div class="row botaocadastrar">
+                        <button
+                        type="button" class="btn btn-success tam"
+                        (click)="cadastrar()"
+                        
+                      >
+                        Cadastrar
+                      </button>
+                    </div>
                   </div>
-                  <label for="name">Nome:</label>
-                  <input
-                  [(ngModel)]="material.name"
-                  name="name"
-                  type="text"
-                  class="linha"
-                  id="name"
-                  required=""
-                  placeholder="Digite o nome do material"
-                />
-  
-                <label for="quantity">Quantidade</label>
-                <input
-                  [(ngModel)]="material.quantity"
-                  name="quantity"
-                  type="number"
-                  class="linha"
-                  id="quantity"
-                  required=""
-                  placeholder="Digite a Quantidade do material"
-                />
-  
-                <label for="user">Usuario</label>
-                <input
-                  [(ngModel)]="material.user"
-                  name="user"
-                  type="text"
-                  class="linha"
-                  id="user"
-                  required=""
-                  placeholder="Digite o usuario que está cadastrando o material"
-                />
-                  <div class="row botaocadastrar">
-                <button
-                type="button" class="btn btn-success tam"
-                (click)="cadastrar()"
-                
-              >
-                Cadastrar
-              </button>
-            </div>
-          </div>
 
-          <div class="isso" id="ft-color">
-              <h1 class="text-center mb-3" > DarBaixa</h1>
-              <label for="quantity">Quantidade:</label>
-                <input
-                  [(ngModel)]="materialDarBaixa.quantity"
-                  name="quantity"
-                  type="number"
-                  class="linha"
-                  id="quantity"
-                  placeholder="Digite a Quantidade do material para dar baixa"
-                />
-
-              <label for="user">Usuario</label>
-                <input
-                [(ngModel)]="materialDarBaixa.user"
-                  name="user"
-                  type="text"
-                  class="linha"
-                  id="user"
-                  placeholder="Digite o usuario que está dando baixa no material"
-                />
-
-                <div class="row botaocadastrar">
-                    <button type="button" class="btn btn-success tam">
-                    Dar baixa
-                  </button> 
+              
               </div>
+
+        
           </div>
-     
-      </div>
-
- 
-  </div>
 
 
-</div>
+        </div>
     
     
   </div>	
+
+  <!-- Fim Janela Estoquista-->
 
 
   <section>
     <div class="row col-md-12">
-      <div class="col-md-4 item"> <a href="#bg">Padeiro</a></div>
+      <div class="col-md-4 item"> <a href="#bgPadeiro">Padeiro</a></div>
       <div class="col-md-4 item" ><a href="#bgEstoquista">Estoquista</a></div>
       <div class="col-md-4 item">hey</div>
     </div>
