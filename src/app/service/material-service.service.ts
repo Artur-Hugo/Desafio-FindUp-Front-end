@@ -13,4 +13,8 @@ export class MaterialServiceService {
   getAllMaterials(): Observable<Material[]>{
     return this.http.get<Material[]>('http://localhost:8080/rawMaterials/leite')
   }
+
+  postMaterial(material: Material): Observable<Material>{
+    return this.http.post<Material>('http://localhost:8080/rawMaterials', material)
+  }
 }

@@ -12,6 +12,8 @@ export class RawMaterialComponent implements OnInit {
 
   material: Material = new Material();
 
+
+
   listaMaterials : Material[]
 
   constructor(
@@ -28,4 +30,15 @@ export class RawMaterialComponent implements OnInit {
       this.listaMaterials = resp
     })
   }
+
+  cadastrar() {
+    this.materialService
+      .postMaterial(this.material)
+      .subscribe((resp: Material) => {
+        this.material = resp;
+        alert('Postagem realizada com sucesso!');
+      });
+  }
+
+  
 }
