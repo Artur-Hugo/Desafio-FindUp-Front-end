@@ -1,187 +1,173 @@
-<head>
-<style>
-  *{
-    margin: 0;
-    padding: 0;
-  }
-  
-  #bg{
-    width: 100%;
-    height: 100%;
-    top:0;
-    left: 0;
-    background-color: rgba(0,0,0,.8);
-    position: fixed;
-    display: none;
-  }
-  
-  #bg:target{
-    display: block;
-    
-  }
-  
-  #bg:target ~ .box{
-    top:150px;
-    transition: all .3s;
-    transition-delay: .2s;
-    display: block;
-  
-  }
-  .box{
-    width: 720px;
-    height: 405px;
-    position: absolute;
-    margin-left: 30%;
-    display: none;
-  }
 
-  #bgj{
-    width: 100%;
-    height: 100%;
-    top:0;
-    left: 0;
-    background-color: rgba(0,0,0,.8);
-    position: fixed;
-    display: none;
-  }
-  
-  #bgj:target{
-    display: block;
-    
-  }
-  
-  #bgj:target ~ .box1{
-    top:150px;
-    transition: all .3s;
-    transition-delay: .2s;
-    display: block;
-  
-  }
-  .box1{
-    width: 720px;
-    height: 405px;
-    position: absolute;
-    margin-left: 30%;
-    display: none;
-  }
-  
-
-
-  
-  #close{
-    color:#fff;
-    font-family: 'Arial';
-    text-decoration: none;
-    font-size: 35px;
-    position: relative;
-    background-color: #000;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-  
-  
-  }
-  #close:hover{
-    opacity: .6;
-  }
-  
-  </style>
-  
-  </head>
   
   <body>
   
-  <a href="#bg">JANELA</a>
+  <a href="#bg">Padeiro</a>
     <br>
-  <a href="#bgj">JAia</a>
+  <a href="#bgEstoquista">Estoquista</a>
   
   <div id="bg"></div>
   <div class="box">
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Email address</label>
-      <label for="name">Name</label>
-              <input
-                [(ngModel)]="material.name"
-                name="name"
-                type="text"
-                class="linha"
-                id="name"
-                placeholder="Digite o nome"
-              />
-
-              <label for="quantity">Quantidade</label>
-              <input
-                [(ngModel)]="material.quantity"
-                name="quantity"
-                type="number"
-                class="linha"
-                id="quantity"
-                placeholder="Digite a Quantidade"
-              />
-
-              <label for="user">Título</label>
-              <input
-                [(ngModel)]="material.user"
-                name="user"
-                type="text"
-                class="linha"
-                id="user"
-                placeholder="Digite o usuario"
-              />
-
-              <button
-              type="button"
-              class="btn btn-outline-light bgBlue text-white"
-              (click)="cadastrar()"
-             
-            >
-              Publicar
-            </button>
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
     <a href="" id="close">X</a>
-  </div>	
-
-  <div id="bgj"></div>
-  <div class="box1">
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-    </div>
-    
-    <a href="" id="close">X</a>
-  </div>	
-<div class="card-columns">
-                    <div class="card text-center" *ngFor="let item of listaMaterials">
-                        <div class="card-body">
-                            <h5 class="card-title">{{item.name}}</h5>
-                          
-                            <p class="card-text">{{item.user}}</p>
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                      </tr>
-                    </thead>
-                    <tbody *ngFor="let item of listaMaterials">
+    <div class="container lista">
+      <h2>Listagem</h2>
+      <form action="/consultar" method="POST" name="frm_consulta" class="ml-3">
+          <div class="form-group">
+              <div class="row centro">
+                  <input type="text" class="form-control col-md-5" name="consulta"
+                  placeholder="Digite aqui a sua consulta" [(ngModel)]='materialName' (keyup)='findByMaterialName()'>
+                  <button type="submit" class="btn btn-success ml-4">Consultar</button>
+              </div>
+          </div>
+      </form>
+      <div  align="center">
+          <table class="table">
+              <thead>
+                  <tr>
+                    <th><a href="#">identificação</a></th>
+                      <th><a href="#">nome</a></th>
+                      <th><a href="#">Quantidade</a></th>
+                      <th><a href="#">usuario</a></th>
                      
+                      
+                  </tr>
+              </thead>
+              <tbody *ngFor="let material of listaMaterials">
+                  
                       <tr>
-                        <th scope="row">{{item.id}}</th>
-                        <td colspan="2">{{item.name}}</td>
-                        <td>{{item.user}}</td>
+                          <td nowrap="true">
+                              <a >{{material.id}}</a>
+                          </td>
+                          <td nowrap="true">{{material.name}} </td>
+                          <td nowrap="true">{{material.quantity}} </td>
+                          <td nowrap="true">{{material.user}}</td>
+                        
+                          <td>
+                            
+                          </td>
                       </tr>
-                    </tbody>
-                  </table>
+                  
+              </tbody>
+          </table>
+      </div>
+     
+  </div>
+  
+    
+    
+  </div>	
 
-              
+  <div id="bgEstoquista"></div>
+  <div class="boxEstoquista">
+    <a href="" id="close">X</a>
+    <div class="row d-flex align-items-lg-center ">
+    
+      <div class=" d-flex justify-content-center" id="img-bg"></div>
+      
+
+
+      <div class="borda bg-white" id="border">
+
+          <div class="row d-flex justify-content-center">
+              <div class="isso" id="ft-color">
+                  <div class="color">
+              <h1 class="text-center mb-3">Cadastrar Material</h1>
+                  </div>
+                  <label for="name">Nome:</label>
+                  <input
+                  [(ngModel)]="material.name"
+                  name="name"
+                  type="text"
+                  class="linha"
+                  id="name"
+                  required=""
+                  placeholder="Digite o nome do material"
+                />
+  
+                <label for="quantity">Quantidade</label>
+                <input
+                  [(ngModel)]="material.quantity"
+                  name="quantity"
+                  type="number"
+                  class="linha"
+                  id="quantity"
+                  required=""
+                  placeholder="Digite a Quantidade do material"
+                />
+  
+                <label for="user">Usuario</label>
+                <input
+                  [(ngModel)]="material.user"
+                  name="user"
+                  type="text"
+                  class="linha"
+                  id="user"
+                  required=""
+                  placeholder="Digite o usuario que está cadastrando o material"
+                />
+                  <div class="row botaocadastrar">
+                <button
+                type="button" class="btn btn-success tam"
+                (click)="cadastrar()"
+                
+              >
+                Cadastrar
+              </button>
+            </div>
+          </div>
+
+          <div class="isso" id="ft-color">
+              <h1 class="text-center mb-3" > DarBaixa</h1>
+              <label for="quantity">Quantidade:</label>
+                <input
+                  [(ngModel)]="materialDarBaixa.quantity"
+                  name="quantity"
+                  type="number"
+                  class="linha"
+                  id="quantity"
+                  placeholder="Digite a Quantidade do material para dar baixa"
+                />
+
+              <label for="user">Usuario</label>
+                <input
+                [(ngModel)]="materialDarBaixa.user"
+                  name="user"
+                  type="text"
+                  class="linha"
+                  id="user"
+                  placeholder="Digite o usuario que está dando baixa no material"
+                />
+
+                <div class="row botaocadastrar">
+                    <button type="button" class="btn btn-success tam">
+                    Dar baixa
+                  </button> 
+              </div>
+          </div>
+     
+      </div>
+
+ 
+  </div>
+
+
+</div>
+    
+    
+  </div>	
+
+
+  <section>
+    <div class="row col-md-12">
+      <div class="col-md-4 item"> <a href="#bg">Padeiro</a></div>
+      <div class="col-md-4 item" ><a href="#bgEstoquista">Estoquista</a></div>
+      <div class="col-md-4 item">hey</div>
+    </div>
+  </section>
+
+ 
+
+
+              </body>
+
+            

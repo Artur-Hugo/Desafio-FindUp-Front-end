@@ -17,4 +17,8 @@ export class MaterialServiceService {
   postMaterial(material: Material): Observable<Material>{
     return this.http.post<Material>('http://localhost:8080/rawMaterials', material)
   }
+
+  getMaterialByName(name: string): Observable<Material[]>{
+    return this.http.get<Material[]>(`http://localhost:8080/rawMaterials/${name}`)
+  }
 }

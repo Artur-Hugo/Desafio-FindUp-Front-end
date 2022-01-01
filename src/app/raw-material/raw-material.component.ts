@@ -12,13 +12,22 @@ export class RawMaterialComponent implements OnInit {
 
   material: Material = new Material();
 
+  materialDarBaixa: Material = new Material();
 
+  materialName: string
 
   listaMaterials : Material[]
 
+
+ 
+
   constructor(
-    private materialService: MaterialServiceService
-  ) { }
+    private materialService: MaterialServiceService,
+    
+  ) { 
+  
+  
+  }
 
   ngOnInit(): void {
     this.getAllPostagens()
@@ -36,9 +45,16 @@ export class RawMaterialComponent implements OnInit {
       .postMaterial(this.material)
       .subscribe((resp: Material) => {
         this.material = resp;
-        alert('Postagem realizada com sucesso!');
+        alert('Cadastro de material realizada com sucesso!');
       });
   }
+
+  findByMaterialName(){
+    this.materialService.getMaterialByName(this.materialName).subscribe((resp: Material[])=> {
+      this.listaMaterials = resp
+    })
+  }
+
 
   
 }
