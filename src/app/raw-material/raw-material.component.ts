@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Material } from '../model/Material';
 import { QtdGastaPorPadeiro } from '../model/QtdGastaPorPadeiro';
 import { MaterialServiceService } from '../service/material-service.service';
@@ -26,23 +25,27 @@ export class RawMaterialComponent implements OnInit {
 
   listaQtdGasta : QtdGastaPorPadeiro[]
 
+  verifique : string
+  verifiqueQtd: number
+
 
  
 
   constructor(
     private materialService: MaterialServiceService,
-    
+
   ) { 
   
   
   }
 
   ngOnInit(): void {
-    
-    
+       
   }
 
-
+  load() {
+    location.reload()
+  }
 
   cadastrar() {
     this.materialService
@@ -50,6 +53,9 @@ export class RawMaterialComponent implements OnInit {
       .subscribe((resp: Material) => {
         this.material = resp;
         alert('Cadastro de material realizada com sucesso!');
+      },undefined => {
+        alert("Precisa Preencher todos os Campos para cadastrar!");
+        this.load()
       });
   }
 
@@ -65,10 +71,31 @@ export class RawMaterialComponent implements OnInit {
   })
   }
 
+  Pulguinante(id: number){
+    if(this.verifique == undefined || this.verifiqueQtd == undefined){
+      alert("Preencha todos os campos!!")
+  }else{
+    this.putQtdGasta(id)
+  }
+  }
+
+
+
   putQtdGasta(id: number){
   this.materialService.putQtdGastaPorPadeiro(id, this.qtdGasta ).subscribe((resp: QtdGastaPorPadeiro)=>{
-    this.qtdGasta = resp;
-  });
+    
+      this.qtdGasta = resp;
+      alert("Concluído com sucesso")
+      this.load()
+    
+    
+  },erro => {
+    if(erro.status == 400){
+        alert("Quantidade insuficiente para dar Baixa")
+    }
+  },
+  
+  );
   }
 
 
