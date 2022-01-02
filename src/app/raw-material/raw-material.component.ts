@@ -13,13 +13,14 @@ export class RawMaterialComponent implements OnInit {
 
   material: Material = new Material();
 
-  materialDarBaixa: Material = new Material();
-
   qtdGasta: QtdGastaPorPadeiro = new QtdGastaPorPadeiro();
 
   materialName: string
 
   qtdGastaUser : string
+
+  idMaterial : number
+
 
   listaMaterials : Material[]
 
@@ -63,5 +64,15 @@ export class RawMaterialComponent implements OnInit {
       this.listaQtdGasta = resp
   })
   }
-  
+
+  putQtdGasta(id: number){
+  this.materialService.putQtdGastaPorPadeiro(id, this.qtdGasta ).subscribe((resp: QtdGastaPorPadeiro)=>{
+    this.qtdGasta = resp;
+  });
+  }
+
+
+  ver(){
+    console.log(this.idMaterial)
+  }
 }

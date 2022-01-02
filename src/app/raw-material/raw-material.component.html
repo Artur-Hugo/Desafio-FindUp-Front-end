@@ -41,6 +41,9 @@
                                     <td nowrap="true">{{material.name}} </td>
                                     <td nowrap="true">{{material.quantity}} </td>
                                     <td nowrap="true">{{material.user}}</td>
+                                    <td><button (click)=" idMaterial = material.id" 
+                                      (click)="ver()"
+                                       ><a href="#bgBaixaNoSistema">DarBaixa</a></button></td>
                                   
                                     <td>
                                       
@@ -50,34 +53,7 @@
                         </tbody>
                     </table>
                 </div>
-          <div class="isso letraFluorescente" id="ft-color">
-            <h1 class="text-center mb-3" > DarBaixa</h1>
-            <label for="quantity">Quantidade:</label>
-              <input
-                [(ngModel)]="materialDarBaixa.quantity"
-                name="quantity"
-                type="number"
-                class="linha"
-                id="quantity"
-                placeholder="Digite a Quantidade do material para dar baixa"
-              />
-
-            <label for="user">Usuario</label>
-              <input
-              [(ngModel)]="materialDarBaixa.user"
-                name="user"
-                type="text"
-                class="linha"
-                id="user"
-                placeholder="Digite o usuario que está dando baixa no material"
-              />
-
-              <div class="row botaocadastrar">
-                  <button type="button" class="btn btn-success tam">
-                  Dar baixa
-                </button> 
-            </div>
-        </div>
+        
         
       </div>
   
@@ -86,6 +62,67 @@
   </div>	
 
    <!-- FIm Janela Padeiro-->
+
+
+   <!-- INICIO Dar Baixa no sistema -->
+
+   <div id="bgBaixaNoSistema"></div>
+    <div class="boxBaixaNoSistema">
+      <a href="" id="close">X</a>
+        <div class="row d-flex align-items-lg-center ">
+        
+          <div class=" d-flex justify-content-center" id="img-bg"> </div>
+
+            <div class="borda bg-white" id="border">  
+
+              <div class="row d-flex justify-content-center">
+
+                <div class="isso letraFluorescente" id="ft-color">
+                  <h1 class="text-center mb-3" > DarBaixa</h1>
+                  <label for="quantity">Quantidade:</label>
+                    <input
+                      [(ngModel)]="qtdGasta.quantity"
+                      name="quantity"
+                      type="number"
+                      class="linha"
+                      id="quantity"
+                      placeholder="Digite a Quantidade do material para dar baixa"
+                    />
+              
+                  <label for="user">Usuario</label>
+                    <input
+                    [(ngModel)]="qtdGasta.user"
+                      name="user"
+                      type="text"
+                      class="linha"
+                      id="user"
+                      placeholder="Digite o usuario que está dando baixa no material"
+                    />
+              
+                    <div class="row botaocadastrar">
+                        <button type="button" class="btn btn-success tam"
+                        (click)="putQtdGasta(idMaterial)"
+                        (click)="ver()"
+                        >
+                        Dar baixa
+                      </button> 
+                  </div>
+              </div>
+                
+
+              </div>
+    
+      </div>
+
+
+   </div>
+
+
+</div>	
+
+
+
+   <!-- FIM Dar Baixa no Sistema -->
 
 
   <!-- Inicio Janela Estoquista-->
@@ -142,6 +179,7 @@
                         <button
                         type="button" class="btn btn-success tam"
                         (click)="cadastrar()"
+                        (click)="ver()"
                         
                       >
                         Cadastrar
@@ -202,6 +240,7 @@
                                     <td nowrap="true">{{qtdGasta.quantity}} </td>
                                     <td nowrap="true">{{qtdGasta.user}}</td>
                                     <td nowrap="true">{{qtdGasta.createdDate}}</td>
+                                    
                                   
                                     <td>
                                       
