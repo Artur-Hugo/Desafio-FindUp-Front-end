@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Material } from '../model/Material';
+import { QtdGastaPorPadeiro } from '../model/QtdGastaPorPadeiro';
 import { MaterialServiceService } from '../service/material-service.service';
 
 @Component({
@@ -14,9 +15,15 @@ export class RawMaterialComponent implements OnInit {
 
   materialDarBaixa: Material = new Material();
 
+  qtdGasta: QtdGastaPorPadeiro = new QtdGastaPorPadeiro();
+
   materialName: string
 
+  qtdGastaUser : string
+
   listaMaterials : Material[]
+
+  listaQtdGasta : QtdGastaPorPadeiro[]
 
 
  
@@ -30,15 +37,11 @@ export class RawMaterialComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllPostagens()
-    console.log(this.listaMaterials)
+    
+    
   }
 
-  getAllPostagens(){
-    this.materialService.getAllMaterials().subscribe((resp: Material[])=>{
-      this.listaMaterials = resp
-    })
-  }
+
 
   cadastrar() {
     this.materialService
@@ -55,6 +58,10 @@ export class RawMaterialComponent implements OnInit {
     })
   }
 
-
+  findByMaterialUser(){
+  this.materialService.getQtdGastaPorPadeiroByUser(this.qtdGastaUser).subscribe((resp: QtdGastaPorPadeiro[])=>{
+      this.listaQtdGasta = resp
+  })
+  }
   
 }

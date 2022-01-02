@@ -165,12 +165,71 @@
 
   <!-- Fim Janela Estoquista-->
 
+  <!-- Inicio Janela Gerente-->
+
+  <div id="bgGerente"></div>
+      <div class="boxGerente">
+        <a href="" id="close">X</a>
+        <div class="container lista ">
+          <h2 class="text-center mb-3 letraFluorescenteB ">Gasto por padeiro:</h2>
+          <form action="/consultar" method="POST" name="frm_consulta" class="ml-3">
+              <div class="form-group">
+                  <div class="row centro bg-white consul">
+                      <input type="text" class="form-control col-md-5" name="consulta"
+                      placeholder="Digite aqui a sua consulta" [(ngModel)]='qtdGastaUser' (keyup)='findByMaterialUser()'>
+                      <button type="submit" class="btn btn-success ml-4">Consultar</button>
+                  </div>
+              </div>
+          </form>
+                <div class="scroll" align="center">
+                    <table class="table letraFluorescenteB">
+                        <thead class="bg-white ">
+                            <tr>
+                              <th><a>identificação</a></th>
+                                <th><a >nome</a></th>
+                                <th><a >Quantidade</a></th>
+                                <th><a >usuario</a></th>
+                                <th><a >data</a><th></th>
+                              
+                                
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let qtdGasta of listaQtdGasta">
+                            
+                                <tr class="bg-white">
+                                    <td nowrap="true">
+                                        <a >{{qtdGasta.id}}</a>
+                                    </td>
+                                    <td nowrap="true">{{qtdGasta.name}} </td>
+                                    <td nowrap="true">{{qtdGasta.quantity}} </td>
+                                    <td nowrap="true">{{qtdGasta.user}}</td>
+                                    <td nowrap="true">{{qtdGasta.createdDate}}</td>
+                                  
+                                    <td>
+                                      
+                                    </td>
+                                </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+         
+        
+      </div>
+  
+    
+    
+  </div>	
+
+
+  <!-- Fim Janela Gerente -->
+
 
   <section>
     <div class="row col-md-12">
       <div class="col-md-4 item"> <a href="#bgPadeiro">Padeiro</a></div>
       <div class="col-md-4 item" ><a href="#bgEstoquista">Estoquista</a></div>
-      <div class="col-md-4 item">hey</div>
+      <div class="col-md-4 item"><a href="#bgGerente">Gerente</a></div>
     </div>
   </section>
 
