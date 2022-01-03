@@ -111,6 +111,9 @@ Este projeto contem a parte:
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node](https://nodejs.org/en/)
+
+
+
 Comando para a instalação de Typescript: (npm install -g typescript)
 
 Verifique se o Angular foi baixado: (ng --version)
