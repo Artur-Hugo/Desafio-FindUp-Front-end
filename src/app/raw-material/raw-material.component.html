@@ -13,7 +13,7 @@
           <h2 class="text-center mb-3 letraFluorescente">Buscar Material</h2>
           <form action="/consultar" method="POST" name="frm_consulta" class="ml-3">
               <div class="form-group">
-                  <div class="row centro">
+                  <div class="row centro consul">
                       <input type="text" class="form-control col-md-5" name="consulta"
                       placeholder="Digite aqui a sua consulta" [(ngModel)]='materialName' (keyup)='findByMaterialName()'>
                       <button type="submit" class="btn btn-success ml-4">Consultar</button>
@@ -211,7 +211,7 @@
           <h2 class="text-center mb-3 letraFluorescenteB ">Gasto por padeiro:</h2>
           <form action="/consultar" method="POST" name="frm_consulta" class="ml-3">
               <div class="form-group">
-                  <div class="row centro bg-white consul">
+                  <div class="row centro  consul">
                       <input type="text" class="form-control col-md-5" name="consulta"
                       placeholder="Digite aqui a sua consulta" [(ngModel)]='qtdGastaUser' (keyup)='findByMaterialUser()'>
                       <button type="submit" class="btn btn-success ml-4">Consultar</button>
@@ -269,9 +269,9 @@
     </div>
 
     <div class="row col-md-12">
-      <div class="col-md-4 item"><button type="button" class="botao btn btn-outline-success"> <a href="#bgPadeiro">Padeiro</a></button></div>
-      <div class="col-md-4 item" ><button type="button" class="botao btn btn-outline-secondary"><a href="#bgEstoquista">Estoquista</a></button></div>
-      <div class="col-md-4 item"><button type="button" class=" botao btn btn-outline-danger"><a href="#bgGerente">Gerente</a></button></div>
+      <div class="col-md-4 item"><a type="button" class="botao btn btn-outline-success" href="#bgPadeiro">Padeiro</a></div>
+      <div class="col-md-4 item" ><a type="button" class="botao btn btn-outline-secondary" href="#bgEstoquista">Estoquista</a></div>
+      <div class="col-md-4 item"><a type="button" class=" botao btn btn-outline-danger" href="#bgGerente">Gerente</a></div>
     </div>
   </section>
 

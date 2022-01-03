@@ -27,6 +27,8 @@ body {
 
 .botao{
     padding: 10px;
+    padding: 40px;
+    border-radius: 30%;
 }
 
 
@@ -216,6 +218,9 @@ body {
       margin-bottom: 10px;
   }
 
+  .bordarRedonda{
+    border-radius: 10%;
+  }
   
 
   /* Fim Janela Gerente*/
@@ -287,6 +292,7 @@ body {
     margin:20px;
     border-radius: 30%;
     left: 22px;
+    padding-top: 9px;
 }
 
   /* Fim Janela DarBaixaNoSistema*/
