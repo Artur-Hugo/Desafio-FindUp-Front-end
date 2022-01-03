@@ -22,4 +22,8 @@ export class MaterialServiceService {
   getMaterialByName(name: string): Observable<Material[]>{
     return this.http.get<Material[]>(`http://localhost:8080/rawMaterials/${name}`)
   }
+
+  putQtdGastaPorPadeiro(id: number, qtdGastaPorPadeiro :QtdGastaPorPadeiro ): Observable<QtdGastaPorPadeiro>{
+    return this.http.put<QtdGastaPorPadeiro>(`http://localhost:8080/rawMaterials/${id}/request`, qtdGastaPorPadeiro)
+  }
 }

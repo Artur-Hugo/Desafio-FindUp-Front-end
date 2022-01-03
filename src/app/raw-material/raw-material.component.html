@@ -13,7 +13,7 @@
           <h2 class="text-center mb-3 letraFluorescente">Buscar Material</h2>
           <form action="/consultar" method="POST" name="frm_consulta" class="ml-3">
               <div class="form-group">
-                  <div class="row centro">
+                  <div class="row centro consul">
                       <input type="text" class="form-control col-md-5" name="consulta"
                       placeholder="Digite aqui a sua consulta" [(ngModel)]='materialName' (keyup)='findByMaterialName()'>
                       <button type="submit" class="btn btn-success ml-4">Consultar</button>
@@ -41,6 +41,9 @@
                                     <td nowrap="true">{{material.name}} </td>
                                     <td nowrap="true">{{material.quantity}} </td>
                                     <td nowrap="true">{{material.user}}</td>
+                                    <td><button (click)=" idMaterial = material.id" 
+                                      (click)="ver()"
+                                       ><a href="#bgBaixaNoSistema">DarBaixa</a></button></td>
                                   
                                     <td>
                                       
@@ -50,34 +53,7 @@
                         </tbody>
                     </table>
                 </div>
-          <div class="isso letraFluorescente" id="ft-color">
-            <h1 class="text-center mb-3" > DarBaixa</h1>
-            <label for="quantity">Quantidade:</label>
-              <input
-                [(ngModel)]="materialDarBaixa.quantity"
-                name="quantity"
-                type="number"
-                class="linha"
-                id="quantity"
-                placeholder="Digite a Quantidade do material para dar baixa"
-              />
-
-            <label for="user">Usuario</label>
-              <input
-              [(ngModel)]="materialDarBaixa.user"
-                name="user"
-                type="text"
-                class="linha"
-                id="user"
-                placeholder="Digite o usuario que está dando baixa no material"
-              />
-
-              <div class="row botaocadastrar">
-                  <button type="button" class="btn btn-success tam">
-                  Dar baixa
-                </button> 
-            </div>
-        </div>
+        
         
       </div>
   
@@ -86,6 +62,70 @@
   </div>	
 
    <!-- FIm Janela Padeiro-->
+
+
+   <!-- INICIO Dar Baixa no sistema -->
+
+   <div id="bgBaixaNoSistema"></div>
+    <div class="boxBaixaNoSistema">
+      <a href="" id="close">X</a>
+        <div class="row d-flex align-items-lg-center ">
+        
+          <div class=" d-flex justify-content-center" id="img-bg"> </div>
+
+            <div class="borda bg-white" id="border">  
+
+              <div class="row d-flex justify-content-center">
+
+                <div class="isso letraFluorescente" id="ft-color">
+                  <h1 class="text-center mb-3" > DarBaixa</h1>
+                  <label for="quantity">Quantidade:</label>
+                    <input
+                      [(ngModel)]="qtdGasta.quantity"
+                      name="quantity"
+                      type="number"
+                      class="linha"
+                      id="quantity"
+                      [(ngModel)]='verifiqueQtd'
+                      placeholder="Digite a Quantidade do material para dar baixa" required
+                    />
+              
+                  <label for="user">Usuario</label>
+                    <input
+                    [(ngModel)]="qtdGasta.user"
+                      name="user"
+                      type="text"
+                      class="linha"
+                      id="user"
+                      [(ngModel)]='verifique'
+                      placeholder="Digite o usuario que está dando baixa no material" required
+                    />
+              
+                    <div class="row botaocadastrar">
+                        <a type="button" class="btn btn-success tam"
+                        (click)="Pulguinante(idMaterial)"
+                        (click)="ver()"
+                        href="#close"
+                        >
+                        Dar baixa
+                    </a> 
+                  </div>
+              </div>
+                
+
+              </div>
+    
+      </div>
+
+
+   </div>
+
+
+</div>	
+
+
+
+   <!-- FIM Dar Baixa no Sistema -->
 
 
   <!-- Inicio Janela Estoquista-->
@@ -114,7 +154,7 @@
                           class="linha"
                           id="name"
                           required=""
-                          placeholder="Digite o nome do material"
+                          placeholder="Digite o nome do material" required
                         />
           
                         <label for="quantity">Quantidade</label>
@@ -125,7 +165,7 @@
                           class="linha"
                           id="quantity"
                           required=""
-                          placeholder="Digite a Quantidade do material"
+                          placeholder="Digite a Quantidade do material" required
                         />
           
                         <label for="user">Usuario</label>
@@ -136,16 +176,15 @@
                           class="linha"
                           id="user"
                           required=""
-                          placeholder="Digite o usuario que está cadastrando o material"
+                          placeholder="Digite o usuario que está cadastrando o material" required
                         />
                           <div class="row botaocadastrar">
-                        <button
-                        type="button" class="btn btn-success tam"
-                        (click)="cadastrar()"
+                       <a href="#close" type="button" class="btn btn-success tam"
+                      (click)="cadastrar()"
+                      (click)="load()" >Cadastrar</a>
+                       
                         
-                      >
-                        Cadastrar
-                      </button>
+                     
                     </div>
                   </div>
 
@@ -172,7 +211,7 @@
           <h2 class="text-center mb-3 letraFluorescenteB ">Gasto por padeiro:</h2>
           <form action="/consultar" method="POST" name="frm_consulta" class="ml-3">
               <div class="form-group">
-                  <div class="row centro bg-white consul">
+                  <div class="row centro  consul">
                       <input type="text" class="form-control col-md-5" name="consulta"
                       placeholder="Digite aqui a sua consulta" [(ngModel)]='qtdGastaUser' (keyup)='findByMaterialUser()'>
                       <button type="submit" class="btn btn-success ml-4">Consultar</button>
@@ -202,6 +241,7 @@
                                     <td nowrap="true">{{qtdGasta.quantity}} </td>
                                     <td nowrap="true">{{qtdGasta.user}}</td>
                                     <td nowrap="true">{{qtdGasta.createdDate}}</td>
+                                    
                                   
                                     <td>
                                       
@@ -229,9 +269,9 @@
     </div>
 
     <div class="row col-md-12">
-      <div class="col-md-4 item"><button type="button" class="botao btn btn-outline-success"> <a href="#bgPadeiro">Padeiro</a></button></div>
-      <div class="col-md-4 item" ><button type="button" class="botao btn btn-outline-secondary"><a href="#bgEstoquista">Estoquista</a></button></div>
-      <div class="col-md-4 item"><button type="button" class=" botao btn btn-outline-danger"><a href="#bgGerente">Gerente</a></button></div>
+      <div class="col-md-4 item"><a type="button" class="botao btn btn-outline-success" href="#bgPadeiro">Padeiro</a></div>
+      <div class="col-md-4 item" ><a type="button" class="botao btn btn-outline-secondary" href="#bgEstoquista">Estoquista</a></div>
+      <div class="col-md-4 item"><a type="button" class=" botao btn btn-outline-danger" href="#bgGerente">Gerente</a></div>
     </div>
   </section>
 
